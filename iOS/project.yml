@@ -1,0 +1,75 @@
+name: Bookclub Log
+options:
+  bundleIdPrefix: com.shimondeitel.clublog
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+  groupSortPosition: top
+settings:
+  base:
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    SWIFT_VERSION: "5.0"
+    DEVELOPMENT_TEAM: "W7Q885Q59C"
+    CODE_SIGN_STYLE: Automatic
+    IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+    TARGETED_DEVICE_FAMILY: "1"
+    ENABLE_USER_SCRIPT_SANDBOXING: "YES"
+targets:
+  Bookclub Log:
+    type: application
+    platform: iOS
+    sources:
+      - path: Bookclub Log
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.shimondeitel.clublog
+        TARGETED_DEVICE_FAMILY: "1"
+        INFOPLIST_FILE: Bookclub Log/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        ENABLE_PREVIEWS: "YES"
+        GENERATE_INFOPLIST_FILE: "NO"
+  Bookclub LogTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: Bookclub LogTests
+      - path: Bookclub Log.storekit
+    dependencies:
+      - target: Bookclub Log
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.shimondeitel.clublog.tests
+        GENERATE_INFOPLIST_FILE: "YES"
+        TARGETED_DEVICE_FAMILY: "1"
+  Bookclub LogUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: Bookclub LogUITests
+    dependencies:
+      - target: Bookclub Log
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.shimondeitel.clublog.uitests
+        GENERATE_INFOPLIST_FILE: "YES"
+        TARGETED_DEVICE_FAMILY: "1"
+schemes:
+  Bookclub Log:
+    build:
+      targets:
+        Bookclub Log: all
+        Bookclub LogTests: [test]
+        Bookclub LogUITests: [test]
+    run:
+      config: Debug
+      storeKitConfiguration: Bookclub Log.storekit
+    test:
+      config: Debug
+      storeKitConfiguration: Bookclub Log.storekit
+      targets:
+        - Bookclub LogTests
+        - Bookclub LogUITests
+    archive:
+      config: Release
